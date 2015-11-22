@@ -1,3 +1,8 @@
+require 'slim'
+require 'slim/include'
+
+require 'susy'
+
 ###
 # Compass
 ###

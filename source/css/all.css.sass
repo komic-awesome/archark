@@ -1,0 +1,14 @@
+@import "vendor/normalize"
+@import "mods/layout"
+
+
+.index-page
+  .showcase
+    overflow: hidden
+  .showcase-item
+    margin-bottom: gutter()
+    @include gallery(4.66 of 14)
+    @include maintain-aspect-ratio(4, 3)
+    background-size: cover
+  .collective-bjarke-ingels
+    background-image: image_url("collectives/bjarke-ingels/cover.jpg")
