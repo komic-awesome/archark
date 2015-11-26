@@ -1,6 +1,7 @@
 @import "vendor/normalize"
 @import "mods/layout"
 
+$name-list: 'alvaro-siza' 'bjarke-ingels' 'mad' 'shigeru-ban' 'wang-shu' 'zhang-yong-he'
 
 .index-page
   .showcase
@@ -10,5 +11,7 @@
     @include gallery(4.66 of 14)
     @include maintain-aspect-ratio(4, 3)
     background-size: cover
-  .collective-bjarke-ingels
-    background-image: image_url("collectives/bjarke-ingels/cover.jpg")
+  @each $name in $name-list
+    .collective-#{$name}
+      background-image: image_url('collectives/' + $name + '/cover.jpg')
+      background-position: center top
