@@ -2,6 +2,27 @@ require 'slim'
 require 'slim/include'
 
 require 'susy'
+require 'sass'
+require 'yaml'
+require 'lib/helpers'
+
+require 'rmagick'
+
+module Sass::Script::Functions
+  def greate_masters()
+    Sass::Script::List.new(Helpers::MASTERS['items']
+      .map{ |item| item["id"] }
+      .map{ |s| Sass::Script::String.new(s) }, :space)
+  end
+  def dominant_color(path)
+    img = ::Magick::Image::read("source/images/#{path.value}").first
+    pix = img.scale(1, 1)
+    Sass::Script::Value::Color.from_hex(pix.to_color(pix.pixel_color(0, 0)))
+      .with(:alpha => 0.9)
+  end
+end
+
+helpers Helpers
 
 ###
 # Compass
@@ -25,9 +46,9 @@ require 'susy'
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+with_layout :collectives do
+  page "/collectives/*"
+end
 
 # Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
@@ -42,7 +63,7 @@ require 'susy'
 
 # Reload the browser automatically whenever files change
 configure :development do
-  activate :livereload
+  #activate :livereload
 end
 
 # Methods defined in the helpers block are available in templates

@@ -1,17 +1,118 @@
 @import "vendor/normalize"
 @import "mods/layout"
+@import "compass/css3"
 
-$name-list: 'alvaro-siza' 'bjarke-ingels' 'mad' 'shigeru-ban' 'wang-shu' 'zhang-yong-he'
+$name-list: greate_masters()
+
+.btn
+  @include inline-block
+  font-weight: normal
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  cursor: pointer
+  user-select: none
+  border: 1px solid transparent
+  text-decoration: none
+  @include transition(all .2s ease-in-out)
+  &:hover
+    text-decoration: none
+
+.btn-collective
+  color: white
+  border: 1px solid white
+  padding: 10px 25px
+  border-radius: 18px
+  font-size: 16px
+  &:hover
+    background-color: white
 
 .index-page
   .showcase
     overflow: hidden
   .showcase-item
     margin-bottom: gutter()
+    overflow: hidden
+    position: relative
     @include gallery(4.66 of 14)
     @include maintain-aspect-ratio(4, 3)
-    background-size: cover
+    .info
+      background-color: transparent
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      width: 100%
+      height: 100%
+      opacity: 0
+      color: white
+      font-size: 20px
+      text-align: center
+      @include transition(opacity .5s ease)
+      &:hover
+        opacity: 0.9
+      .inner
+        position: relative
+        top: 40%
+        @include translateY(-50%)
+      strong
+        font-weight: bold
+        font-size: 23px
+      .btn-collective
+        margin-top: 10px
+    .background-image
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      @include transition(transform .5s ease)
+    &:hover
+      .background-image
+        @include scale(1.1)
+
   @each $name in $name-list
+    $cover_path: 'collectives/' + $name + '/cover.jpg'
+    $cover_dominant_color: saturate(dominant_color($cover_path), 20%)
     .collective-#{$name}
-      background-image: image_url('collectives/' + $name + '/cover.jpg')
-      background-position: center top
+      .background-image
+        background-image: image_url($cover_path)
+        background-position: center top
+        background-size: cover
+        width: 100%
+        height: 100%
+      .info
+        background-color: $cover_dominant_color
+      .btn-collective
+        &:hover
+          background-color: white
+          color: $cover_dominant_color
+
+.collective-page
+  .collective-banner
+    overflow: hidden
+    background-size: cover
+    background-position: 0% -200px
+  .title-section
+    color: white
+    text-align: center
+    margin-top: 50px
+  @each $name in $name-list
+    $cover_path: 'collectives/' + $name + '/cover.jpg'
+    $cover_dominant_color: saturate(dominant_color($cover_path), 20%)
+    .collective-banner.collective-#{$name}
+      background-image: image_url($cover_path)
+      .inner
+        min-height: 300px
+        background-color: rgba($cover_dominant_color, 0.72)
+  .booklist
+    margin-top: 60px
+    @include squish(1)
+    .book
+      overflow: hidden
+      @include gallery(3 of 12 1)
+      max-height: 350px
+      margin-bottom: 3em
+      img
+        width: 100%
