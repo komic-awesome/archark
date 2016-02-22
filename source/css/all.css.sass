@@ -109,10 +109,41 @@ $name-list: greate_masters()
   .booklist
     margin-top: 60px
     @include squish(1)
+    .book-front
+      font-size: 0
+      @include translateZ(20px)
+      &:before
+        content: ' '
+        position: absolute
+        top: 0
+        left: 10px
+        bottom: 0
+        width: 3px
+        background: rgba(0,0,0,0.06)
+        @include box-shadow(inset 1px 0 3px rgba(255, 255, 255, 0.1))
+    .book-back
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      @include transform(rotate3d(0,1,0,-180deg) translate3d(0,0,20px))
+      @include box-shadow(10px 10px 30px rgba(0,0,0,0.3))
+    .book-left
+      position: absolute
+      width: 40px
+      top: 0
+      left: -20px
+      height: 100%
+      @include rotateY(-90deg)
     .book
-      overflow: hidden
-      @include gallery(3 of 12 1)
-      max-height: 350px
+      cursor: pointer
+      @include transform-style(preserve-3d)
+      position: relative
       margin-bottom: 3em
+      @include gallery(3 of 12 1)
+      @include transition(transform 0.5s)
+      @include transform( perspective(1800) rotateY(0deg) )
+      &:hover
+        @include transform( perspective(1800) rotateY(25deg) )
       img
         width: 100%

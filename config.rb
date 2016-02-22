@@ -4,13 +4,12 @@ require 'slim/include'
 require 'susy'
 require 'sass'
 require 'yaml'
-require 'lib/helpers'
 
 require 'rmagick'
 
 module Sass::Script::Functions
   def greate_masters()
-    Sass::Script::List.new(Helpers::MASTERS['items']
+    Sass::Script::List.new(CustomHelpers::MASTERS['items']
       .map{ |item| item["id"] }
       .map{ |s| Sass::Script::String.new(s) }, :space)
   end
@@ -21,8 +20,6 @@ module Sass::Script::Functions
       .with(:alpha => 0.9)
   end
 end
-
-helpers Helpers
 
 ###
 # Compass
