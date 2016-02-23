@@ -108,7 +108,8 @@ $name-list: greate_masters()
         background-color: rgba($cover_dominant_color, 0.72)
   .booklist
     margin-top: 60px
-    @include squish(1)
+    overflow: hidden
+    @include squish(2.5)
     .book-front
       font-size: 0
       @include translateZ(20px)
@@ -135,12 +136,39 @@ $name-list: greate_masters()
       left: -20px
       height: 100%
       @include rotateY(-90deg)
-    .book
-      cursor: pointer
-      @include transform-style(preserve-3d)
+    .book-wrapper
       position: relative
       margin-bottom: 3em
-      @include gallery(3 of 12 1)
+      text-align: center
+      @include gallery(2 of 6 20)
+      .bd
+        margin-top: 10px
+      hr
+        border-color: #ddd
+        border-top: 1px
+        background-color: transparent
+        margin: 0 50px
+      h4
+        margin-top: 2em
+        margin-bottom: 0.7em
+        font-weight: 200
+        font-size: 1.2em
+        font-family: "Abril Fatface", sans-serif
+        color: #64696a
+      .author
+        font-size: 12px
+        text-transform: uppercase
+    .book
+      backface-visibility: hidden
+      .fake-link
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        @include translateZ(30px)
+        backface-visibility: hidden
+      @include transform-style(preserve-3d)
       @include transition(transform 0.5s)
       @include transform( perspective(1800) rotateY(0deg) )
       &:hover

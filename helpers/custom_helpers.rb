@@ -22,21 +22,31 @@ module CustomHelpers
     end.join('')
   end
 
-  def book(name, isbn, language="zh-cn")
+  def book(name, author, isbn, language="zh-cn")
     path = "/images/collectives/#{current_page.data.id}/books/#{isbn}.jpg"
     img = ::Magick::Image::read("source#{path}").first
     pix = img.scale(1, 1)
     backgorund_color = pix.to_color(pix.pixel_color(0, 0))
     return <<-HTML
-      <div class="book">
-        <div class="book-front">
-          <img alt="#{name}" src="#{path}">
+      <div class="book-wrapper">
+        <div class="book">
+          <div class="book-front">
+            <img alt="#{name}" src="#{path}">
+          </div>
+          <div class="book-back"></div>
+          <div class="book-left" style="background-color: #{backgorund_color};">
+          </div>
+          <h3 style="display:none;">#{name}</h3>
+          <a class="fake-link"
+            target="_blank"
+            href="http://book.douban.com/isbn/#{isbn}/">
+          </a>
         </div>
-        <div class="book-back">
+        <div class="bd">
+          <h4>#{name}</h4>
+          <hr></hr>
+          <p class="author">#{author}</p>
         </div>
-        <div class="book-left" style="background-color: #{backgorund_color};">
-        </div>
-        <h3 style="display:none;">#{name}</h3>
       </div>
     HTML
   end
