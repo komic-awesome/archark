@@ -40,7 +40,6 @@ module CustomHelpers
           </div>
           <h3 style="display:none;">#{name}</h3>
           <a class="fake-link"
-            target="_blank"
             href="http://book.douban.com/isbn/#{isbn}/">
           </a>
         </div>
