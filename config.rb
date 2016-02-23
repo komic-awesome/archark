@@ -59,7 +59,7 @@ end
 # activate :automatic_image_sizes
 #
 activate :deploy do |deploy|
-  deploy.deploy_method = :git
+  deploy.method = :git
   deploy.remote = 'origin'
   deploy.branch = 'gitcafe-pages'
 end
