@@ -4,6 +4,7 @@ module CustomHelpers
   MASTERS = YAML.load(File.open('greate-masters.yml'))
   def greate_master_showcases(&block)
     CustomHelpers::MASTERS['items'].map do |item|
+      href = url_for("/collectives/#{item["id"]}.html")
       <<-HTML
         <div class='showcase-item collective-#{item["id"]} '>
           <div class='background-image'></div>
@@ -13,7 +14,7 @@ module CustomHelpers
               <p><strong>#{item['name']}</strong></p>
               <div>
                 <a class="btn btn-collective"
-                  href="/collectives/#{item["id"]}.html">浏览一下</a>
+                  href="#{href}">浏览一下</a>
               </div>
             </div>
           </div>
@@ -23,15 +24,16 @@ module CustomHelpers
   end
 
   def book(name, author, isbn, language="zh-cn")
-    path = "/images/collectives/#{current_page.data.id}/books/#{isbn}.jpg"
-    img = ::Magick::Image::read("source#{path}").first
+    path = "images/collectives/#{current_page.data.id}/books/#{isbn}.jpg"
+    img = ::Magick::Image::read("source/#{path}").first
     pix = img.scale(1, 1)
     backgorund_color = pix.to_color(pix.pixel_color(0, 0))
+    image_tag_html = image_tag(path)
     return <<-HTML
       <div class="book-wrapper">
         <div class="book">
           <div class="book-front">
-            <img alt="#{name}" src="#{path}">
+            #{image_tag_html}
           </div>
           <div class="book-back"></div>
           <div class="book-left" style="background-color: #{backgorund_color};">
