@@ -111,9 +111,19 @@ $name-list: greate_masters()
       .inner
         min-height: 300px
         background-color: rgba($cover_dominant_color, 0.72)
+  .content-info
+    line-height: 1.6
+    @include squish(2.5)
+    text-align: center
+    padding: 4px 0px
+    border-top: 1px double #999
+    border-bottom: 1px double #999
+    color: #999
+    border-width: 3px
+    margin-top: 25px
   .booklist
     margin-top: 60px
-    overflow: hidden
+    overflow: auto
     @include squish(2.5)
     .book-front
       font-size: 0

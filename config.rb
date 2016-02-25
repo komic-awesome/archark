@@ -5,6 +5,7 @@ require 'susy'
 require 'sass'
 require 'yaml'
 
+
 require 'rmagick'
 
 module Sass::Script::Functions
@@ -69,6 +70,21 @@ end
 configure :development do
   #activate :livereload
 
+  require 'rack/subsetter'
+
+  use Rack::Subsetter, {
+    :font_map => {
+      'kkk' => ['kkk', '.ttf']
+    },
+    :prefix => 'webfont',
+    :font_source => File.expand_path('../source/font', __FILE__),
+    :font_dist => {
+      :public_path => File.expand_path('../source', __FILE__),
+      :dir => 'font_dist',
+    },
+    :relative_url_root => '/'
+  }
+
 end
 
 # Methods defined in the helpers block are available in templates
@@ -84,6 +100,7 @@ set :js_dir, 'js'
 
 set :images_dir, 'images'
 
+require 'middleman-sprockets'
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -100,4 +117,22 @@ configure :build do
 
   # Or use a different image path
   set :http_prefix, "/archbooks/"
+
+  require 'rack/subsetter'
+
+  use Rack::Subsetter, {
+    :font_map => {
+      'kkk' => ['kkk', '.ttf']
+    },
+    :prefix => 'webfont',
+    :font_source => File.expand_path('../source/font', __FILE__),
+    :font_dist => {
+      :public_path => File.expand_path('../source', __FILE__),
+      :dir => 'font_dist',
+    },
+    :relative_url_root => '/archbooks/'
+  }
+
+  set :font_path, "./source/font_dist"
+  sprockets.append_path "./source/font_dist"
 end
