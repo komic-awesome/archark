@@ -39,14 +39,25 @@ a
     background-color: white
 
 .index-page
+  .content-info
+    line-height: 1.6
+    text-align: center
+    padding: 4px 0px
+    border-top: 1px double #222
+    border-bottom: 1px double #222
+    color: #222
+    border-width: 3px
+    margin: 25px 0
   .showcase
     overflow: hidden
   .showcase-item
     margin-bottom: gutter()
     overflow: hidden
     position: relative
-    @include gallery(4.66 of 14)
     @include maintain-aspect-ratio(4, 3)
+    margin-bottom: 20px
+    @include breakpoint($no-mobile)
+      @include gallery(4.66 of 14)
     .info
       background-color: transparent
       position: absolute
