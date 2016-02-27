@@ -1,13 +1,13 @@
 - wrap_layout :layout do
   .main.collective-page
-    .collective-banner.collective-bjarke-ingels
+    .collective-banner class="collective-#{current_page.data.id}"
       .inner
         .header-nav
           a href="#{url_for("/index.html")}" 首 页
         .full-layout.title-section
           h1
             | #{current_page.data.title} 的书单
-          p.info Bjarke Bundgaard Ingels (born 2 October 1974) is a Danish architect.
+          p.info #{current_page.data.subtitle}
 
     .content-info.webfont-kkk
       | 本文所收集图书均在 #{current_page.data.title} 的博文，访谈中提及。
