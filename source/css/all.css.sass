@@ -108,9 +108,15 @@ a
     @include breakpoint($mobile)
       background-position: center top
   .title-section
-    color: white
+    h1
+      font-family: "Abril Fatface", sans-serif
+      text-transform: uppercase
     text-align: center
+    color: white
     margin-top: 50px
+    @include breakpoint($no-mobile)
+      @include squish(2.5)
+      text-align: left
   @each $name in $name-list
     $cover_path: 'collectives/' + $name + '/cover.jpg'
     $cover_dominant_color: saturate(dominant_color($cover_path), 20%)

@@ -6,7 +6,8 @@ id: bjarke-ingels
 .collective-banner.collective-bjarke-ingels
   .inner
     .full-layout.title-section
-      h1 #{current_page.data.title} 的书单
+      h1
+        | #{current_page.data.title} 的书单
       p.info Bjarke Bundgaard Ingels (born 2 October 1974) is a Danish architect.
 
 .content-info.webfont-kkk
@@ -39,4 +40,3 @@ id: bjarke-ingels
             ].each do |name, href|
             li
               a.link data-hover="- #{name}" target="_blank" href="#{href}" #{name}
-
