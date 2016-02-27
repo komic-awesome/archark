@@ -107,16 +107,36 @@ a
     background-position: 0% -200px
     @include breakpoint($mobile)
       background-position: center top
+  .header-nav
+    margin-left: -15px
+    @include breakpoint($mobile)
+      margin-left: 0
+  .header-nav a
+    margin-top: 10px
+    color: rgba(white, 0.8)
+    @include inline-block
+    @include squish(2.5)
+    @include breakpoint($mobile)
+      @include squish(1)
+      border-bottom: 1px solid rgba(white, 0.8)
+      padding: 0
+      padding-bottom: 5px
+      border-radius: 0px
+    padding: 5px 15px
+    border-radius: 6px
+    @include transition(all 0.2s)
+    &:hover
+      background: rgba(#000, 0.3)
   .title-section
     h1
       font-family: "Abril Fatface", sans-serif
       text-transform: uppercase
-    text-align: center
+    text-align: left
     color: white
-    margin-top: 50px
-    @include breakpoint($no-mobile)
-      @include squish(2.5)
-      text-align: left
+    margin-top: 20px
+    @include squish(2.5)
+    @include breakpoint($mobile)
+      @include squish(1)
   @each $name in $name-list
     $cover_path: 'collectives/' + $name + '/cover.jpg'
     $cover_dominant_color: saturate(dominant_color($cover_path), 20%)
