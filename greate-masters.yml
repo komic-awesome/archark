@@ -1,10 +1,10 @@
 items:
-  - id: alvaro-siza
-    name: 阿尔巴罗·西萨
+  #- id: alvaro-siza
+    #name: 阿尔巴罗·西萨
   - id: bjarke-ingels
     name: Bjarke Ingels
-  - id: mad
-    name: 马岩松
+  #- id: mad
+    #name: 马岩松
   - id: shigeru-ban
     name: 坂茂
   - id: wang-shu
