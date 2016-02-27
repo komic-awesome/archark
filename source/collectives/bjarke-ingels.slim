@@ -6,8 +6,8 @@ id: bjarke-ingels
 .collective-banner.collective-bjarke-ingels
   .inner
     .full-layout.title-section
-      h1 Books recommended by #{current_page.data.title}
-      p.info Reading list by Facebook CEO and Founder.
+      h1 #{current_page.data.title} 的书单
+      p.info Bjarke Bundgaard Ingels (born 2 October 1974) is a Danish architect.
 
 .content-info.webfont-kkk
   | 本文所收集图书均在 #{current_page.data.title} 的博文，访谈中提及。
@@ -22,3 +22,21 @@ id: bjarke-ingels
   =book('傅科摆', '[意]翁贝托·埃科', '9787532759941')
   =book('Generation X', 'Douglas Coupland', '9780312054366')
   =book('Twin Peaks: An Access Guide to the Town', 'David Lynch / Mark Frost', '9780671743994', 'en-us')
+
+.seciton-reference
+  .split-line
+    .inner
+      a.open-reference.webfont-kkk href="#"
+        | 书籍来源？
+        span.rendered-by-customfont
+          | 收起引用
+    .reference-list
+      .inner
+        ul
+          - [ \
+              ["Unpacking my library: Bjarke Ingels", "http://www.domusweb.it/en/reviews/2011/12/16/unpacking-my-library-bjarke-ingels.html"], \
+              ["Delirious New York", "http://www.wired.com/2015/09/bjarke-ingels-2-world-trade-center-wtc-2/"], \
+            ].each do |name, href|
+            li
+              a.link data-hover="- #{name}" target="_blank" href="#{href}" #{name}
+

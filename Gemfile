@@ -3,6 +3,7 @@
 source 'https://ruby.taobao.org'
 
 gem "middleman", "~>3.4.0"
+gem "jquery-middleman"
 
 gem 'susy', '~> 2.2', '>= 2.2.6'
 gem 'slim', '~> 3.0', '>= 3.0.6'
