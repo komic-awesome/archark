@@ -116,7 +116,6 @@ configure :build do
   # activate :relative_assets
 
   # Or use a different image path
-  set :http_prefix, "/archbooks/"
 
   require 'rack/subsetter'
 
@@ -130,7 +129,7 @@ configure :build do
       :public_path => File.expand_path('../source', __FILE__),
       :dir => 'font_dist',
     },
-    :relative_url_root => '/archbooks/'
+    :relative_url_root => '/'
   }
 
   set :font_path, "./source/font_dist"
